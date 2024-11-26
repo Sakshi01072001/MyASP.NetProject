@@ -1,0 +1,256 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="MyASP.NetProject.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <style>
+        
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:white; /* Match this color to your background color      #D5A687*/
+    /*padding: 10px 20px;*/
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+   
+}
+
+
+.header .left,
+.header .center,
+.header .right {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.header .center{
+    height: 50px;
+}
+
+.header .left {
+    flex: 1;
+}
+
+.header .center {
+    flex: 2;
+    justify-content: center;
+}
+
+.header .right {
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.header .left img,
+.header .right img {
+    height: 25px;
+    margin-right: 25px;
+}
+
+
+.header .center nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header .center nav a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.header .center nav a:hover {
+    text-decoration: underline;
+}
+
+.header .right .cart {
+    position: relative;
+}
+
+.header .right .cart::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+
+.footer {
+    background-color: #fff; /* Black background color */
+    color: black; /* White text color */
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.footer .footer-section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.footer .footer-section div {
+    flex: 1;
+    margin: 10px;
+}
+
+.footer .footer-section h4 {
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.footer .footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer .footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer .footer-section ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.footer .footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer .newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+nav{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}
+
+    </style>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="header">
+            <div class="center" style="font-size:30px; background-color: black; color: white;">
+                <span style="color: mediumaquamarine;">Craft</span>Corner.
+            </div>
+        </div>
+        <div class="header" style="background-color: mediumaquamarine;" >
+            <div class="left">
+                &nbsp;<nav>
+                    <a href="default.aspx">Home</a> <a href="stationary.aspx">Stationary</a> <a href="office.aspx">Office Items</a> <a href="artcraft.aspx">Art & Craft</a> <a href="contact.aspx">Contact</a>
+                    
+                </nav>
+            </div>
+            <div class="right"> 
+                                   <span style="color: black"> Welcome : </span>
+                         <asp:Label ForeColor="black" ID="Label1" runat="server" Text="Label"></asp:Label> 
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
+                <a href="signin.aspx"><img src="images/user.png" alt="user Icon" width="20px" /></a>                
+                <a href="viewcart.aspx" class="cart" data-count="0"><img src="images/cart.png" alt="Cart Icon" width="20px" /></a>
+            </div>
+        </div>
+
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer class="footer">
+            <div class="footer-section">
+                <div>
+                    <h4>DELIVERY & RETURN</h4>
+                    <ul>
+                        <li><a href="#">Check Order</a></li>
+                        <li><a href="#">Delivery & Collection</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Delivery Return</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>CUSTOMER SERVICES</h4>
+                    <ul>
+                        <li><a href="#">Terms & Policies</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Opening Hours</a></li>
+                        <li><a href="#">Size Guides</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li><a href="#">Our Brand</a></li>
+                        <li><a href="#">Charity</a></li>
+                        <li><a href="#">CSR</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="newsletter">
+                    <h4>NEWSLETTER SIGN UP</h4>
+                    <p>Enjoy 15% off* your first order when you sign up to our newsletter</p>
+                    <input type="email" placeholder="Your e-mail address" />
+                    <button type="button">SUBSCRIBE</button>
+                </div>
+            </div>
+            <div class="bottom-footer">
+                <p>© CopyRight | All Rights Reserved.</p>
+                </div>
+                </footer>
+        </div>
+        
+    </form>
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+    </asp:PlaceHolder>
+</body>
+</html>

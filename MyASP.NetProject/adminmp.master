@@ -1,0 +1,16 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="adminmp.master.cs" Inherits="MyASP.NetProject.adminmp" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+        <p>
+    <asp:HyperLink navigateUrl="addproduct.aspx" ID="HyperLink1" runat="server">Add Product</asp:HyperLink>
+             &nbsp;
+      
+</p>
+
+ <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+     
+     <p>
+         <br />
+     </p>
+     
+    </asp:ContentPlaceHolder>
+</asp:Content>
